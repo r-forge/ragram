@@ -1,10 +1,10 @@
 setClass('SARGeneric',
          representation = representation(
-             satellite = 'character',
-             cornerLon = 'numeric',
-             cornerLat = 'numeric',
              centerLat = 'numeric',
-             centerLon = 'numeric'),
+             centerLon = 'numeric',
+             cornerLat = 'numeric',
+             cornerLon = 'numeric',
+             satellite = 'character'),
          contains='VIRTUAL')
 
 #' Geolocation points class
@@ -129,8 +129,14 @@ setClass('TSX',
 #'
 #' A class to handle a collection of synthetic aperture radar (SAR) records.
 #' Objects of this class are lists.
-#'
+#' 
+#' @slot .Data Objects of \code{\link{SAR-class}} or subclass.
+#' @slot centerLat Numeric.
+#' @slot centerLon Numeric.
+#' @slot cornerLat Numeric vector.
+#' @slot centerLon Numeric vector.
 #' @slot crs \code{\link[sp]{CRS-class}} object
+#' @slot extent. Object of \code{\link[raster]{Extent-class}}.
 #' @export
 #' @seealso \code{\link{SAR-class}}
 #' @examples 
