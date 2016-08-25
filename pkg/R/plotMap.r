@@ -62,10 +62,14 @@ setGeneric('plotMap',
                    plotOrbitNumber(object, ...)
            })
 
+#' @rdname plotMap
+#' @export
 setMethod('plotMap', 'SAR', function(object, ...) {
     cat('Map for single SAR object.\n')
 })
 
+#' @rdname plotMap
+#' @export
 setMethod('plotMap', 'SARSet', function(object, ...) {
     cat('Map for set of SAR objects.\n')
 })
