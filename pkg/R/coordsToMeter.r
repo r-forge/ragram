@@ -5,7 +5,7 @@
 #' @return  numeric vector of form 
 #' c(longitudinal distance in meter, latitudinal distance in meter).
 #' @export
-setGeneric('coordsToMeter', function(coords=c(0,0,0,0), ...) {
+setGeneric('coordsToMeter', function(coords=c(0,0,0,0)) {
     coords <- standardGeneric('coordsToMeter')
     lon1 <- coords[1]
     lon2 <- coords[2]
@@ -18,7 +18,6 @@ setGeneric('coordsToMeter', function(coords=c(0,0,0,0), ...) {
     return(c(m.lon, m.lat))
 })
 
-#' @name coordsToMeter
 #' @rdname coordsToMeter
 #' @export
 setMethod('coordsToMeter', c('numeric'),
@@ -26,7 +25,6 @@ setMethod('coordsToMeter', c('numeric'),
               return(coords)
           })
 
-#' @name coordsToMeter
 #' @rdname coordsToMeter
 #' @export
 setMethod('coordsToMeter', c('Extent'),

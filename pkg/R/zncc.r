@@ -16,12 +16,14 @@ setGeneric('zncc', function(master, slave, u1, v1, u2, v2, n=3, m=n) {
     standardGeneric('zncc')
 })
 
+#' @rdname zncc
 #' @export
 setMethod('zncc', c('RasterLayer', 'RasterLayer'), 
           function(master, slave, u1, v1, u2, v2, n=3, m=n) {
               cor(master[(u1-n):(u1+n), (v1-m):(v1+m)], slave[(u2-n):(u2+n), (v2-m):(v2+m)])
           })
 
+#' @rdname zncc
 #' @export
 setMethod('zncc', c('matrix', 'matrix'), 
           function(master, slave, u1, v1, u2, v2, n=3, m=n) {
@@ -44,7 +46,7 @@ setMethod('zncc', c('matrix', 'matrix'),
 #' @param n Integer. (Window size-1)/2 in x and y direction.
 #' @export
 ssd <- function(master, slave, u1, v1, u2, v2, n=3) {
-    sum((img1[(u1-n):(u1+n), (v1-n):(v1+n)] - img2[(u2-n):(u2+n), (v2-n):(v2+n)])^2)
+    sum((master[(u1-n):(u1+n), (v1-n):(v1+n)] - slave[(u2-n):(u2+n), (v2-n):(v2+n)])^2)
 }
 
 #' Sum of absolute differences (SAD)
@@ -61,7 +63,7 @@ ssd <- function(master, slave, u1, v1, u2, v2, n=3) {
 #' @param n Integer. (Window size-1)/2 in x and y direction.
 #' @export
 sad <- function(master, slave, u1, v1, u2, v2, n) {
-    sum(abs(img1[(u1-n):(u1+n), (v1-n):(v1+n)] - img2[(u2-n):(u2+n), (v2-n):(v2+n)]))
+    sum(abs(master[(u1-n):(u1+n), (v1-n):(v1+n)] - slave[(u2-n):(u2+n), (v2-n):(v2+n)]))
 }
 
 #' Window mean
@@ -78,7 +80,7 @@ getAverage <- function(object, u, v, n) {
     s <- 0
     for (i in seq(-n, n, 1))
         for (j in seq(-n, n, 1)) {
-            s = s + as.numeric(img[u+i,v+j])
+            s = s + as.numeric(object[u+i,v+j])
         }
     return(s/(2*n+1)^2)
 }
