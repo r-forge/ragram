@@ -24,10 +24,15 @@ or object of the \code{\link{SAR-class}} (or a subclass e.g. \code{\link{Sentine
 Adds orbit numbers of SAR records.
 }
 \examples{
-plotOrbitNumber(kili_2014_12_25_155516_vv)
-plotOrbitNumber(kiliSet)
+data(kili)
+
+plotMap(kili[[1]], orbit=F)
+plotOrbitNumber(kili[[1]])
+
+plotMap(kili, orbit=F)
+plotOrbitNumber(kili)
 }
 \seealso{
-\code{\link{plotMap}}, \code{\link{plotGmap}}, \code{\link{orbit}}
+\code{\link{plotMap}}, \code{\link{plotGmap}}
 }
 

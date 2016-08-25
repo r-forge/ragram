@@ -58,8 +58,12 @@ plot(disp.map.lat)
 disp.map.diagonal <- disp.map.lon
 values(disp.map.diagonal) <- sqrt(disp.map.lat[]^2 + disp.map.lon[]^2)
 plot(disp.map.diagonal)
+
+# to run parallel register cores first, e.g.:
+# library(doMC)
+# registerDoMC(4)
 }
 \seealso{
-\code{\link{zncc}}, \code{\link{plotDisparityMap}}
+\code{\link{zncc}}
 }
 
