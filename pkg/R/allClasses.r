@@ -130,13 +130,15 @@ setClass('TSX',
 #' A class to handle a collection of synthetic aperture radar (SAR) records.
 #' Objects of this class are lists.
 #' 
-#' @slot .Data Objects of \code{\link{SAR-class}} or subclass.
+#' @param elements List or vector of \code{\link{SAR-class}} or subclass objects.
+#' @slot .Data List or vector of \code{\link{SAR-class}} or subclass objects.
 #' @slot centerLat Numeric.
 #' @slot centerLon Numeric.
+#' @slot cornerLon Numeric vector.
 #' @slot cornerLat Numeric vector.
-#' @slot centerLon Numeric vector.
+#' @slot satellite Character.
 #' @slot crs \code{\link[sp]{CRS-class}} object
-#' @slot extent. Object of \code{\link[raster]{Extent-class}}.
+#' @slot extent Object of \code{\link[raster]{Extent-class}}.
 #' @export
 #' @seealso \code{\link{SAR-class}}
 #' @examples 
@@ -162,8 +164,13 @@ setClass('TSX',
 #' kiliSetAsc <- sarSet(c(master, slave))
 setClass('SARSet',
          representation = representation(
+             centerLat = 'numeric',
+             centerLon = 'numeric',
+             cornerLat = 'numeric',
+             cornerLon = 'numeric',
+             satellite = 'character',
              crs = 'CRS',
              extent = 'Extent'),
          prototype = prototype(
              crs = CRS('+proj=longlat +datum=WGS84 +no_defs +ellps=WGS84 +towgs84=0,0,0')),
-         contains = c('list', 'SARGeneric'))
+         contains = c('list'))
